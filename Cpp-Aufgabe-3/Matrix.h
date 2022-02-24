@@ -16,8 +16,10 @@ public:
               double m21, double m22, double m23, 
               double m31, double m32, double m33 );
     
-    double get(int row, int col, int value) { 
-        m_matrix[row][col] = value;
+    double get(int row, int col, int value, bool change) {
+        if (change == true) {
+            m_matrix[row][col] = value;
+        }
         return m_matrix[row][col]; }
 
     std::string toString() const;

@@ -12,8 +12,8 @@ Hinweis: Bitte geben Sie nur die Quelldateien ohne das Visual Studio Projekt ab!
 
 int main()
 {
-    
-	
+    bool change = false;
+    int newValue = 0;
     // ------------------------------------------------------------------------
     // 1. Aufgabe (Referenzen)
     // ------------------------------------------------------------------------
@@ -30,7 +30,7 @@ int main()
     {
         std::cout << "Moechten Sie einen Wert in der Matrix anpassen? -> Ja = '1', Nein = '2':";
 
-        int a, b, c;
+        int a, b;
         std::cin >> update;
         if (update == "1")
         {
@@ -39,8 +39,10 @@ int main()
             std::cout << "Neue Zeile eingeben:";
             std::cin >> b;
             std::cout << "Neuen Wert eingeben:";
-            std::cin >> c;
-            std::cout << "Wert in Matrix(2,2): " << mat1.get(a, b, c) << std::endl;
+            std::cin >> newValue;
+            change = true;
+            std::cout << "Wert in Matrix (" + to_string(a) + ","  + to_string(b) + "):" << mat1.get(a, b, newValue, change) << std::endl;
+            change = false;
         }
     } while (update != "2");
 
@@ -93,11 +95,21 @@ int main()
     
     Matrix33 matZ(1,3,5,  1,-2,1, 1.5, 3.5, -4);
     // Erzeugen Sie einen Konvertierungsoperator, so dass folgender Ausdruck klappt.
-    // double det = matZ;
+    double det;
+    det = matZ.get(0,0,0, false)* matZ.get(1, 1, 0, false)* matZ.get(2, 2, 0, false)+ matZ.get(0, 1, 0, false)* matZ.get(1, 2, 0, false)* matZ.get(2, 0, 0, false)+ matZ.get(0, 2, 0, false)* matZ.get(1, 0, 0, false)* matZ.get(2, 1, 0, false)- (matZ.get(2, 0, 0, false) * matZ.get(1, 1, 0, false) * matZ.get(0, 2, 0, false) + matZ.get(2, 1, 0, false) * matZ.get(1, 2, 0, false) * matZ.get(0, 0, 0, false) + matZ.get(2, 2, 0, false) * matZ.get(1, 0, 0, false) * matZ.get(0, 1, 0, false));
+    
+    std::cout << "Die Determinante der folgenden 3x3 Matrix " << endl;
+    std::cout << matZ.toString() << std::endl;
+    std::cout << "ist: " + to_string(det) << endl;
+        
+  
+
 
     // Der Konvertierungsoperator soll die Determinante der Matrix zurueckgeben.
     // Hinweis: http://de.wikipedia.org/wiki/Determinante#Berechnung
     
+
+    //double det = matZ;
     // ------------------------------------------------------------------------
     // 5. Aufgabe (Exception)
     // ------------------------------------------------------------------------
@@ -111,8 +123,8 @@ int main()
 	// z.B.
 
 
-    int newValue = 0; //Der Wert newValue wurde erstellt da durch Aufgabe 1 die Funktion get 3 Werte benötigt.
-    double y = matX.get(3,3, newValue);
+     //Der Wert newValue wurde erstellt da durch Aufgabe 1 die Funktion get 3 Werte benötigt.
+    double y = matX.get(3,3, newValue, change);
     
     return 0;
 }
