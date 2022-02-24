@@ -96,14 +96,12 @@ int main()
     Matrix33 matZ(1,3,5,  1,-2,1, 1.5, 3.5, -4);
     // Erzeugen Sie einen Konvertierungsoperator, so dass folgender Ausdruck klappt.
     double det;
-    det = matZ.get(0,0,0, false)* matZ.get(1, 1, 0, false)* matZ.get(2, 2, 0, false)+ matZ.get(0, 1, 0, false)* matZ.get(1, 2, 0, false)* matZ.get(2, 0, 0, false)+ matZ.get(0, 2, 0, false)* matZ.get(1, 0, 0, false)* matZ.get(2, 1, 0, false)- (matZ.get(2, 0, 0, false) * matZ.get(1, 1, 0, false) * matZ.get(0, 2, 0, false) + matZ.get(2, 1, 0, false) * matZ.get(1, 2, 0, false) * matZ.get(0, 0, 0, false) + matZ.get(2, 2, 0, false) * matZ.get(1, 0, 0, false) * matZ.get(0, 1, 0, false));
+    det = matZ.get(0,0,0,false)*matZ.get(1,1,0,false)*matZ.get(2,2,0,false)+matZ.get(0,1,0,false)*matZ.get(1,2,0,false)*matZ.get(2,0,0,false)+matZ.get(0,2,0,false)*matZ.get(1,0,0,false)*matZ.get(2,1,0,false)
+        -(matZ.get(2,0,0,false)*matZ.get(1,1,0,false)*matZ.get(0,2,0,false)+matZ.get(2,1,0,false)*matZ.get(1,2,0,false)*matZ.get(0,0,0,false)+matZ.get(2,2,0,false)*matZ.get(1,0,0,false)*matZ.get(0,1,0,false));
     
     std::cout << "Die Determinante der folgenden 3x3 Matrix " << endl;
     std::cout << matZ.toString() << std::endl;
     std::cout << "ist: " + to_string(det) << endl;
-        
-  
-
 
     // Der Konvertierungsoperator soll die Determinante der Matrix zurueckgeben.
     // Hinweis: http://de.wikipedia.org/wiki/Determinante#Berechnung
