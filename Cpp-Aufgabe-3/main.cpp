@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "Matrix.h"
+using namespace std;
 
 /*
 Bearbeiten Sie die Aufgaben der Reihe nach direkt im Quellcode.
@@ -19,12 +20,29 @@ int main()
     
     std::cout<<"\n\nAufgabe 1\n=========\n" <<std::endl;
     
-	// Wo steckt der eigentliche Konstruktoraufruf bei der folgenden Anweisung?
-	// Wieso kann die Funktion ones() mit dem Scope-Operator, ohne Objekt aufgerufen werden?
+	// Wo steckt der eigentliche Konstruktoraufruf bei der folgenden Anweisung? ==> Der Konstruktoraufruf steckt in der Funktion
+	// Wieso kann die Funktion ones() mit dem Scope-Operator, ohne Objekt aufgerufen werden? ==> Existiert kein Objekt und ein Objekt wird benötigt, wird das Objekt über einen Konstruktor definiert.
 	Matrix33 mat1 = Matrix33::ones();
 	
     // Ueber die Funktion Matrix33::get koennen sie einen Wert in der Matrix abfragen:
-    std::cout<<"Wert in Matrix(2,2): " << mat1.get(1, 1) <<std::endl;
+    string update = "0";
+    do
+    {
+        std::cout << "Moechten Sie einen Wert in der Matrix anpassen? -> Ja = '1', Nein = '2':";
+
+        int a, b, c;
+        std::cin >> update;
+        if (update == "1")
+        {
+            std::cout << "Neue Spalte eingeben:";
+            std::cin >> a;
+            std::cout << "Neue Zeile eingeben:";
+            std::cin >> b;
+            std::cout << "Neuen Wert eingeben:";
+            std::cin >> c;
+            std::cout << "Wert in Matrix(2,2): " << mat1.get(a, b, c) << std::endl;
+        }
+    } while (update != "2");
 
     // veraendern Sie die Funktion Matrix33::get so, 
     // dass Sie ueber diese Funktion auch Werte verändern koennen:
@@ -91,8 +109,10 @@ int main()
 	// Exceptionklasse. Ein Objekt dieser Klasse soll geworfen werden, wenn 
     // bei der Verwendung der get-Funktion fehlerhafte Indizes eingegeben werden
 	// z.B.
-	
-    double y = matX.get(3,3);
+
+
+    int newValue = 0; //Der Wert newValue wurde erstellt da durch Aufgabe 1 die Funktion get 3 Werte benötigt.
+    double y = matX.get(3,3, newValue);
     
     return 0;
 }
