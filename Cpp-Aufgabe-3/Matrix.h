@@ -1,6 +1,5 @@
 #ifndef Matrix3
 #define Matrix3
-
 #include <string>
 
 class Matrix33
@@ -15,6 +14,7 @@ public:
     Matrix33( double m11, double ml2, double m13, 
               double m21, double m22, double m23, 
               double m31, double m32, double m33 );
+
     
     double get(int row, int col, int value, bool change) {
         if (change == true) {
@@ -23,6 +23,13 @@ public:
         return m_matrix[row][col]; }
 
     std::string toString() const;
+
+
+    // Operatoren überladen
+    //Matrix33 operator+(Matrix33 x);
+    //Matrix33 operator*(int x);
+    //Matrix33 operator*(Matrix33 x);
+
 
 
 private:

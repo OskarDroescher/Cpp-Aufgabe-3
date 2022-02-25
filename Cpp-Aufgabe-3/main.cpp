@@ -18,6 +18,10 @@ int main()
     // ------------------------------------------------------------------------
     // 1. Aufgabe (Referenzen)
     // ------------------------------------------------------------------------
+    // Veraendern Sie die Funktion Matrix33::get so, 
+    // dass Sie ueber diese Funktion auch Werte verändern koennen:
+    // Hinweis: Rueckgabewert als Referenz
+    // mat1.get(1, 1) = 5;
     
     std::cout<<"\n\nAufgabe 1\n=========\n" <<std::endl;
     
@@ -30,33 +34,30 @@ int main()
     string update = "0";
     do
     {
-        std::cout << "Moechten Sie einen Wert in der Matrix anpassen? -> Ja = '1', Nein = '2':";
+        std::cout << "Moechten Sie einen Wert in der Matrix anpassen? -> Ja = '1', Nein = '2': ";
         int a, b;
         std::cin >> update;
         if (update == "1")
         {
-            std::cout << "Neue Spalte eingeben:";
+            std::cout << "Neue Spalte eingeben: ";
             std::cin >> a;
-            std::cout << "Neue Zeile eingeben:";
+            std::cout << "Neue Zeile eingeben: ";
             std::cin >> b;
-            std::cout << "Neuen Wert eingeben:";
+            std::cout << "Neuen Wert eingeben: ";
             std::cin >> newValue;
             change = true;
-            std::cout << "Wert in Matrix (" + to_string(a) + ","  + to_string(b) + "):" << mat1.get(a-1, b-1, newValue, change) << std::endl;
+            std::cout << "Wert in Matrix (" + to_string(a) + ","  + to_string(b) + "): " << mat1.get(a-1, b-1, newValue, change) << std::endl;
             //Da ein Mensch bei eins anfängt zu zählen, der Computer bei Arrays jedoch mit 0 wird bei der Eingabe der Spalten und Zeilen der Wert um -1 verringert.
             //Dadurch muss der Mensch nicht anfangen plötzlich mit 0 beim Zählen anzufangen.
             change = false;
         }
     } while (update != "2");
 
-    // veraendern Sie die Funktion Matrix33::get so, 
-    // dass Sie ueber diese Funktion auch Werte verändern koennen:
-	// Hinweis: Rueckgabewert als Referenz
-    // mat1.get(1, 1) = 5;
-
     std::cout<<mat1.toString() <<std::endl; 
 
 	
+
+
     // ------------------------------------------------------------------------
     // 2. Aufgabe (Operatoren)
     // ------------------------------------------------------------------------
@@ -70,10 +71,12 @@ int main()
     // Ausdruecke richtig funktionieren und geben Sie nach jeder Rechnung die Ergebnisse aus:
     
     //Matrix33 matResult1 = matA + matB;
+    //std::cout << matResult1.toString() << std::endl;
     //Matrix33 matResult2 = matA * matB;
     //Matrix33 matResult3 = matA * 5;
     //matResult1 += matB;
     //Matrix33 matC = matResult2 += matB;
+
 
     
     // ------------------------------------------------------------------------
@@ -85,14 +88,18 @@ int main()
     // Testen Sie folgende Anweisung:
     //Matrix33 matResult4 = 5 * matA;
     
-    // Warum funktioniert die Anweisung nicht? aendern Sie den '*' Operator so,
+    // Warum funktioniert die Anweisung nicht? Aendern Sie den '*' Operator so,
     // dass der Ausdruck funktioniert!
     
 
     
+
+
     // ------------------------------------------------------------------------
     // 4. Aufgabe (Konvertierungsoperator)
     // ------------------------------------------------------------------------
+    // Der Konvertierungsoperator soll die Determinante der Matrix zurueckgeben.
+    // Hinweis: http://de.wikipedia.org/wiki/Determinante#Berechnung
     
     std::cout<<"\n\nAufgabe 4\n=========\n" <<std::endl;
     
@@ -105,39 +112,38 @@ int main()
     std::cout << "Die Determinante der folgenden 3x3 Matrix " << endl;
     std::cout << matZ.toString() << std::endl;
     std::cout << "ist: " + to_string(det) << endl;
-
-    // Der Konvertierungsoperator soll die Determinante der Matrix zurueckgeben.
-    // Hinweis: http://de.wikipedia.org/wiki/Determinante#Berechnung
     
 
-    //double det = matZ;
+
     // ------------------------------------------------------------------------
     // 5. Aufgabe (Exception)
     // ------------------------------------------------------------------------
+    // Implementieren Sie ein Exceptionhandling mit einer extra definierten
+    // Exceptionklasse. Ein Objekt dieser Klasse soll geworfen werden, wenn 
+    // bei der Verwendung der get-Funktion fehlerhafte Indizes eingegeben werden
+    // z.B.
     
     std::cout<<"\n\nAufgabe 5\n=========\n" <<std::endl;
     Matrix33 matX(1, 3, 5, 1, -2, 1, 1.5, 3.5, -4);
     //string update = "0";
     do
     {
-        std::cout << "Moechten Sie einen Wert in der Matrix anpassen? -> Ja = '1', Nein = '2':";
+        std::cout << "Moechten Sie einen Wert in der Matrix anpassen? -> Ja = '1', Nein = '2': ";
         int a, b;
         std::cin >> update;
         if (update == "1")
         {
-            std::cout << "Neue Spalte eingeben:";
+            std::cout << "Neue Spalte eingeben: ";
             std::cin >> a;
-            std::cout << "Neue Zeile eingeben:";
+            std::cout << "Neue Zeile eingeben: ";
             std::cin >> b;
             try {
                 if (a > 3 || b > 3 || a < 1 || b < 1)
                     throw MatrixDimensionError();
-                std::cout << "Neuen Wert eingeben:";
+                std::cout << "Neuen Wert eingeben: ";
                 std::cin >> newValue;
                 change = true;
-                std::cout << "Wert in Matrix (" + to_string(a) + "," + to_string(b) + "):" << matX.get(a - 1, b - 1, newValue, change) << std::endl;
-                //Da ein Mensch bei eins anfängt zu zählen, der Computer bei Arrays jedoch mit 0 wird bei der Eingabe der Spalten und Zeilen der Wert um -1 verringert.
-                //Dadurch muss der Mensch nicht anfangen plötzlich mit 0 beim Zählen anzufangen.
+                std::cout << "Wert in Matrix (" + to_string(a) + "," + to_string(b) + "): " << matX.get(a - 1, b - 1, newValue, change) << std::endl;
             }
             catch (const MatrixDimensionError e) {
                 std::cout << "Exception:\n" << e.getError() << std::endl;
@@ -146,10 +152,6 @@ int main()
         }
     } while (update != "2");
     std::cout << matX.toString() << std::endl;
-    // Implementieren Sie ein Exceptionhandling mit einer extra definierten
-	// Exceptionklasse. Ein Objekt dieser Klasse soll geworfen werden, wenn 
-    // bei der Verwendung der get-Funktion fehlerhafte Indizes eingegeben werden
-	// z.B.
     
     return 0;
 }
