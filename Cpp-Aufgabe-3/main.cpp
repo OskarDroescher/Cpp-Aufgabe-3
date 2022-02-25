@@ -41,7 +41,7 @@ int main()
             std::cout << "Neuen Wert eingeben:";
             std::cin >> newValue;
             change = true;
-            std::cout << "Wert in Matrix (" + to_string(a) + ","  + to_string(b) + "):" << mat1.get(a, b, newValue, change) << std::endl;
+            std::cout << "Wert in Matrix (" + to_string(a) + ","  + to_string(b) + "):" << mat1.get(a-1, b-1, newValue, change) << std::endl;
             change = false;
         }
     } while (update != "2");
