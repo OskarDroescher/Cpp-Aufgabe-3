@@ -145,21 +145,11 @@ int main()
             change = false;
         }
     } while (update != "2");
+    std::cout << matX.toString() << std::endl;
     // Implementieren Sie ein Exceptionhandling mit einer extra definierten
 	// Exceptionklasse. Ein Objekt dieser Klasse soll geworfen werden, wenn 
     // bei der Verwendung der get-Funktion fehlerhafte Indizes eingegeben werden
 	// z.B.
-
-    class MatrixDimensionError {
-    public:
-        std::string getError() const {
-            return "Rechteck hat eine unerlaubte Anzahl an Spalten oder Zeilen. \n Erlaubt sind ganzzahlige Werte zwischen 1 und 3";
-        }
-    };
-
-
-     //Der Wert newValue wurde erstellt da durch Aufgabe 1 die Funktion get 3 Werte benötigt.
-    double y = matX.get(3,3, newValue, change);
     
     return 0;
 }

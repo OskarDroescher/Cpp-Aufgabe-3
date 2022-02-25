@@ -31,10 +31,9 @@ private:
 
 #endif
 
-
 class MatrixDimensionError {
 public:
     std::string getError() const {
-        return "Fehlerhafte Eingabe, nur ganzzahlige Werte zwischen 1 und 3 gueltig!";
+        return "Rechteck hat eine unerlaubte Anzahl an Spalten oder Zeilen. \n Erlaubt sind ganzzahlige Werte zwischen 1 und 3";
     }
 };
