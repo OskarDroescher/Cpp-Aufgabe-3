@@ -42,6 +42,8 @@ int main()
             std::cin >> newValue;
             change = true;
             std::cout << "Wert in Matrix (" + to_string(a) + ","  + to_string(b) + "):" << mat1.get(a-1, b-1, newValue, change) << std::endl;
+            //Da ein Mensch bei eins anfängt zu zählen, der Computer bei Arrays jedoch mit 0 wird bei der Eingabe der Spalten und Zeilen der Wert um -1 verringert.
+            //Dadurch muss der Mensch nicht anfangen plötzlich mit 0 beim Zählen anzufangen.
             change = false;
         }
     } while (update != "2");
