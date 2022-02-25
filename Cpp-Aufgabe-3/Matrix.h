@@ -30,3 +30,11 @@ private:
 };
 
 #endif
+
+
+class MatrixDimensionError {
+public:
+    std::string getError() const {
+        return "Fehlerhafte Eingabe, nur ganzzahlige Werte zwischen 1 und 3 gueltig!";
+    }
+};

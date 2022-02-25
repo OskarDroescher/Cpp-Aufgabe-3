@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "Matrix.h"
+#include "MyExceptions.h"
 using namespace std;
 
 /*
@@ -20,7 +21,8 @@ int main()
     
     std::cout<<"\n\nAufgabe 1\n=========\n" <<std::endl;
     
-	// Wo steckt der eigentliche Konstruktoraufruf bei der folgenden Anweisung? ==> Der Konstruktoraufruf steckt in der Funktion
+	// Wo steckt der eigentliche Konstruktoraufruf bei der folgenden Anweisung?
+    // ==> Der Konstruktoraufruf steckt in der Funktion
 	// Wieso kann die Funktion ones() mit dem Scope-Operator, ohne Objekt aufgerufen werden? ==> Existiert kein Objekt und ein Objekt wird benötigt, wird das Objekt über einen Konstruktor definiert.
 	Matrix33 mat1 = Matrix33::ones();
 	
@@ -29,7 +31,6 @@ int main()
     do
     {
         std::cout << "Moechten Sie einen Wert in der Matrix anpassen? -> Ja = '1', Nein = '2':";
-
         int a, b;
         std::cin >> update;
         if (update == "1")
@@ -115,12 +116,47 @@ int main()
     // ------------------------------------------------------------------------
     
     std::cout<<"\n\nAufgabe 5\n=========\n" <<std::endl;
-    
-    Matrix33 matX(1,3,5,  1,-2,1, 1.5, 3.5, -4);
+    Matrix33 matX(1, 3, 5, 1, -2, 1, 1.5, 3.5, -4);
+    //string update = "0";
+    do
+    {
+        std::cout << "Moechten Sie einen Wert in der Matrix anpassen? -> Ja = '1', Nein = '2':";
+        int a, b;
+        std::cin >> update;
+        if (update == "1")
+        {
+            std::cout << "Neue Spalte eingeben:";
+            std::cin >> a;
+            std::cout << "Neue Zeile eingeben:";
+            std::cin >> b;
+            try {
+                if (a > 3 || b > 3 || a < 1 || b < 1)
+                    throw MatrixDimensionError();
+            }
+            catch (const MatrixDimensionError e) {
+                std::cout << "Exception:\n" << e.getError() << std::endl;
+                return 0;
+            }
+            std::cout << "Neuen Wert eingeben:";
+            std::cin >> newValue;
+            change = true;
+            std::cout << "Wert in Matrix (" + to_string(a) + "," + to_string(b) + "):" << matX.get(a - 1, b - 1, newValue, change) << std::endl;
+            //Da ein Mensch bei eins anfängt zu zählen, der Computer bei Arrays jedoch mit 0 wird bei der Eingabe der Spalten und Zeilen der Wert um -1 verringert.
+            //Dadurch muss der Mensch nicht anfangen plötzlich mit 0 beim Zählen anzufangen.
+            change = false;
+        }
+    } while (update != "2");
     // Implementieren Sie ein Exceptionhandling mit einer extra definierten
 	// Exceptionklasse. Ein Objekt dieser Klasse soll geworfen werden, wenn 
     // bei der Verwendung der get-Funktion fehlerhafte Indizes eingegeben werden
 	// z.B.
+
+    class MatrixDimensionError {
+    public:
+        std::string getError() const {
+            return "Rechteck hat eine unerlaubte Anzahl an Spalten oder Zeilen. \n Erlaubt sind ganzzahlige Werte zwischen 1 und 3";
+        }
+    };
 
 
      //Der Wert newValue wurde erstellt da durch Aufgabe 1 die Funktion get 3 Werte benötigt.
