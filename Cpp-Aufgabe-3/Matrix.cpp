@@ -79,6 +79,8 @@ Matrix33 Matrix33::operator+(const Matrix33& rMat) const
                     m_matrix[2][2] + rMat.m_matrix[2][2]);
 }
 
+
+// Matrix * Matrix
 Matrix33 Matrix33::operator*(const Matrix33& rMat) const
 {
     Matrix33 product = Matrix33(0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -88,6 +90,19 @@ Matrix33 Matrix33::operator*(const Matrix33& rMat) const
             for (int inner = 0; inner < 3; inner++) {
                 product.m_matrix[row][col] += m_matrix[row][inner] * rMat.m_matrix[inner][col];
             }
+        }
+    }
+    return product;
+}
+
+
+// Matrix * Zahl
+Matrix33 Matrix33::operator*(int x)
+{
+    Matrix33 product = Matrix33(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            product.m_matrix[row][col] = m_matrix[row][col] * x;
         }
     }
     return product;
