@@ -70,8 +70,8 @@ int main()
     // Implementieren Sie die noetigen Operatoren in der Klasse, damit folgende
     // Ausdruecke richtig funktionieren und geben Sie nach jeder Rechnung die Ergebnisse aus:
     
-    //Matrix33 matResult1 = matA + matB;
-    //std::cout << matResult1.toString() << std::endl;
+    Matrix33 matResult1 = matA + matB;
+    std::cout << "matA + matB =\n" << matResult1.toString() << std::endl;
     //Matrix33 matResult2 = matA * matB;
     //Matrix33 matResult3 = matA * 5;
     //matResult1 += matB;

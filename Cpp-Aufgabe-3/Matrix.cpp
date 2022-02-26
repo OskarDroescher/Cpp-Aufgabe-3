@@ -64,23 +64,30 @@ std::string Matrix33::toString() const
 // ----------------------------------------------------------------------------
 
 
-/*
+
 
 // Matrix + Matrix
-Matrix33 Matrix33::operator+(Matrix33 x) {
-
+Matrix33 Matrix33::operator+(const Matrix33& rMat) const
+{
+    return Matrix33(m_matrix[0][0] + rMat.m_matrix[0][0],
+                    m_matrix[0][1] + rMat.m_matrix[0][1],
+                    m_matrix[0][2] + rMat.m_matrix[0][2],
+                    m_matrix[1][0] + rMat.m_matrix[1][0],
+                    m_matrix[1][1] + rMat.m_matrix[1][1],
+                    m_matrix[1][2] + rMat.m_matrix[1][2],
+                    m_matrix[2][0] + rMat.m_matrix[2][0],
+                    m_matrix[2][1] + rMat.m_matrix[2][1],
+                    m_matrix[2][2] + rMat.m_matrix[2][2]);
 }
 
 
 // Matrix * Zahl
-Matrix33 Matrix33::operator*(int x) {
-
-}
-
-
-// Matrix * Matrix
-Matrix33 Matrix33::operator*(Matrix33 x) {
-
-}
-
-*/
+//Matrix33 Matrix33::operator*(int x) {
+//
+//}
+//
+//
+//// Matrix * Matrix
+//Matrix33 Matrix33::operator*(Matrix33 x) {
+//
+//}
