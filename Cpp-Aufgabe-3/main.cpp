@@ -27,7 +27,8 @@ int main()
     
 	// Wo steckt der eigentliche Konstruktoraufruf bei der folgenden Anweisung?
     // ==> Der Konstruktoraufruf steckt in der Funktion
-	// Wieso kann die Funktion ones() mit dem Scope-Operator, ohne Objekt aufgerufen werden? ==> Existiert kein Objekt und ein Objekt wird benötigt, wird das Objekt über einen Konstruktor definiert.
+	// Wieso kann die Funktion ones() mit dem Scope-Operator, ohne Objekt aufgerufen werden? 
+    //==> Existiert kein Objekt und ein Objekt wird benötigt, wird das Objekt über einen Konstruktor definiert.
 	Matrix33 mat1 = Matrix33::ones();
 	
     // Ueber die Funktion Matrix33::get koennen sie einen Wert in der Matrix abfragen:
@@ -53,10 +54,7 @@ int main()
         }
     } while (update != "2");
 
-    std::cout<<mat1.toString() <<std::endl; 
-
-	
-
+    std::cout<<mat1.toString() <<std::endl;
 
     // ------------------------------------------------------------------------
     // 2. Aufgabe (Operatoren)
@@ -76,11 +74,10 @@ int main()
     std::cout << "matA * matB =\n" << matResult2.toString() << std::endl;
     Matrix33 matResult3 = matA * 5;
     std::cout << "matA * 5 =\n" << matResult3.toString() << std::endl;
-    matResult1 += matB;     // Fehlerhaft, bisher wird nur matResult1 ausgegeben
+    matResult1 += matB;
     std::cout << "matResult1 += matB =\n" << matResult1.toString() << std::endl;
-    //Matrix33 matC = matResult2 += matB;
-
-
+    Matrix33 matC = matResult2 += matB;
+    std::cout << "matC = matResult2 += matB =\n" << matC.toString() << std::endl;
     
     // ------------------------------------------------------------------------
     // 3. Aufgabe (Operatoren)
@@ -90,12 +87,16 @@ int main()
     
     // Testen Sie folgende Anweisung:
     //Matrix33 matResult4 = 5 * matA;
-    //std::cout << "Zahl * matA =\n" << matResult4.toString() << std::endl;
-    // Warum funktioniert die Anweisung nicht? Aendern Sie den '*' Operator so,
-    // dass der Ausdruck funktioniert!
-    
+    // Warum funktioniert die Anweisung nicht?
+    //==> Da der vorhandene Oporator "Matrix33 operator*(int x);" erst die Matrix und dann den int Wert entgegen nimmt.
+    // Aendern Sie den '*' Operator so, dass der Ausdruck funktioniert!
 
-    
+
+
+
+    //Den vorhandenen "*" Operator ändern!!!
+    //Matrix33 matResult4 = 5 * matA;
+    //std::cout << "Zahl * matA =\n" << matResult4.toString() << std::endl;
 
 
     // ------------------------------------------------------------------------
@@ -116,8 +117,6 @@ int main()
     std::cout << matZ.toString() << std::endl;
     std::cout << "ist: " + to_string(det) << endl;
     
-
-
     // ------------------------------------------------------------------------
     // 5. Aufgabe (Exception)
     // ------------------------------------------------------------------------

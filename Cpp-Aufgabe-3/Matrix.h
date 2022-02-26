@@ -9,12 +9,11 @@ public:
     // Static Class-Functions
     static Matrix33 zeros();
     static Matrix33 ones();
-
+    static int l;
     // Construction
     Matrix33( double m11, double ml2, double m13, 
               double m21, double m22, double m23, 
               double m31, double m32, double m33 );
-
     
     double get(int row, int col, int value, bool change) {
         if (change == true) {
@@ -29,9 +28,7 @@ public:
     Matrix33 operator+(const Matrix33& rMat) const;     // Matrix + Matrix
     Matrix33 operator*(const Matrix33& rMat) const;     // Matrix * Matrix
     Matrix33 operator*(int x);                          // Matrix * Zahl
-    Matrix33 operator+=(const Matrix33& rMat) const;    // Matrix += Matrix
-
-
+    Matrix33 operator+=(const Matrix33& rMat);          // Matrix += Matrix
 
 private:
     double m_matrix[3][3];

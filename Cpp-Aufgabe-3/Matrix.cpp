@@ -5,7 +5,6 @@
 #include "Matrix.h"
 #include <iostream>
 
-
 // ----------------------------------------------------------------------------
 
 Matrix33 Matrix33::zeros()
@@ -13,14 +12,12 @@ Matrix33 Matrix33::zeros()
     return Matrix33(0,0,0  ,0,0,0  ,0,0,0);
 }
 
-
 // ----------------------------------------------------------------------------
 
 Matrix33 Matrix33::ones()
 {
     return Matrix33(1,1,1  ,1,1,1  ,1,1,1);
 }
-
 
 // ----------------------------------------------------------------------------
 
@@ -36,7 +33,6 @@ Matrix33::Matrix33( double m11, double m12, double m13, double m21, double m22, 
     m_matrix[2][1] = m32;
     m_matrix[2][2] = m33;
 }
-
 
 // ----------------------------------------------------------------------------
 
@@ -59,10 +55,6 @@ std::string Matrix33::toString() const
     return s.str();
 }
 
-
-
-// ----------------------------------------------------------------------------
-
 // Operatoren überladen
 
 // Matrix + Matrix
@@ -79,7 +71,6 @@ Matrix33 Matrix33::operator+(const Matrix33& rMat) const
                     m_matrix[2][2] + rMat.m_matrix[2][2]);
 }
 
-
 // Matrix * Matrix
 Matrix33 Matrix33::operator*(const Matrix33& rMat) const
 {
@@ -95,7 +86,6 @@ Matrix33 Matrix33::operator*(const Matrix33& rMat) const
     return product;
 }
 
-
 // Matrix * Zahl
 Matrix33 Matrix33::operator*(int x)
 {
@@ -108,17 +98,18 @@ Matrix33 Matrix33::operator*(int x)
     return product;
 }
 
-
-
-//// Matrix += Matrix
-Matrix33 Matrix33::operator+=(const Matrix33& rMat) const
+// Matrix += Matrix
+Matrix33 Matrix33::operator+=(const Matrix33& rMat)
 {
-    Matrix33 sum = Matrix33(0, 0, 0, 0, 0, 0, 0, 0, 0);
-    for (int row = 0; row < 3; row++) {
-        for (int col = 0; col < 3; col++) {
-            sum.m_matrix[row][col] += rMat.m_matrix[row][col] + 10;
-        }
-    }
-    return sum;
+    Matrix33 matadd (m_matrix[0][0] + rMat.m_matrix[0][0],
+                     m_matrix[0][1] + rMat.m_matrix[0][1],
+                     m_matrix[0][2] + rMat.m_matrix[0][2],
+                     m_matrix[1][0] + rMat.m_matrix[1][0],
+                     m_matrix[1][1] + rMat.m_matrix[1][1],
+                     m_matrix[1][2] + rMat.m_matrix[1][2],
+                     m_matrix[2][0] + rMat.m_matrix[2][0],
+                     m_matrix[2][1] + rMat.m_matrix[2][1],
+                     m_matrix[2][2] + rMat.m_matrix[2][2]);
+    *this = matadd;
+    return *this;
 }
-
