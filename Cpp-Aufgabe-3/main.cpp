@@ -76,7 +76,8 @@ int main()
     std::cout << "matA * matB =\n" << matResult2.toString() << std::endl;
     Matrix33 matResult3 = matA * 5;
     std::cout << "matA * 5 =\n" << matResult3.toString() << std::endl;
-    //matResult1 += matB;
+    matResult1 += matB;     // Fehlerhaft, bisher wird nur matResult1 ausgegeben
+    std::cout << "matResult1 += matB =\n" << matResult1.toString() << std::endl;
     //Matrix33 matC = matResult2 += matB;
 
 
@@ -89,7 +90,7 @@ int main()
     
     // Testen Sie folgende Anweisung:
     //Matrix33 matResult4 = 5 * matA;
-    
+    //std::cout << "Zahl * matA =\n" << matResult4.toString() << std::endl;
     // Warum funktioniert die Anweisung nicht? Aendern Sie den '*' Operator so,
     // dass der Ausdruck funktioniert!
     

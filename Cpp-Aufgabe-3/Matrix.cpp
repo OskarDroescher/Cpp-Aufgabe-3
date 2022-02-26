@@ -109,3 +109,16 @@ Matrix33 Matrix33::operator*(int x)
 }
 
 
+
+//// Matrix += Matrix
+Matrix33 Matrix33::operator+=(const Matrix33& rMat) const
+{
+    Matrix33 sum = Matrix33(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            sum.m_matrix[row][col] += rMat.m_matrix[row][col] + 10;
+        }
+    }
+    return sum;
+}
+
