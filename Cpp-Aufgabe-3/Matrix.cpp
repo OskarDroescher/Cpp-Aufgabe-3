@@ -63,8 +63,7 @@ std::string Matrix33::toString() const
 
 // ----------------------------------------------------------------------------
 
-
-
+// Operatoren überladen
 
 // Matrix + Matrix
 Matrix33 Matrix33::operator+(const Matrix33& rMat) const
@@ -80,14 +79,18 @@ Matrix33 Matrix33::operator+(const Matrix33& rMat) const
                     m_matrix[2][2] + rMat.m_matrix[2][2]);
 }
 
+Matrix33 Matrix33::operator*(const Matrix33& rMat) const
+{
+    Matrix33 product = Matrix33(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            // Zeilen von m_matrix mit den Spalten von rMat.m_matrix multiplizieren, um Spalte/Zeile des Produkts zu erhalten
+            for (int inner = 0; inner < 3; inner++) {
+                product.m_matrix[row][col] += m_matrix[row][inner] * rMat.m_matrix[inner][col];
+            }
+        }
+    }
+    return product;
+}
 
-// Matrix * Zahl
-//Matrix33 Matrix33::operator*(int x) {
-//
-//}
-//
-//
-//// Matrix * Matrix
-//Matrix33 Matrix33::operator*(Matrix33 x) {
-//
-//}
+

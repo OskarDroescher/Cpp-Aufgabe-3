@@ -72,7 +72,8 @@ int main()
     
     Matrix33 matResult1 = matA + matB;
     std::cout << "matA + matB =\n" << matResult1.toString() << std::endl;
-    //Matrix33 matResult2 = matA * matB;
+    Matrix33 matResult2 = matA * matB;
+    std::cout << "matA * matB =\n" << matResult2.toString() << std::endl;
     //Matrix33 matResult3 = matA * 5;
     //matResult1 += matB;
     //Matrix33 matC = matResult2 += matB;

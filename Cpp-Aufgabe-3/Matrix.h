@@ -27,7 +27,7 @@ public:
 
     // Operatoren überladen
     Matrix33 operator+(const Matrix33& rMat) const;     // Matrix + Matrix
-    //Matrix33 operator*(int x);
+    Matrix33 operator*(const Matrix33& rMat) const;     // Matrix * Matrix
     //Matrix33 operator*(Matrix33 x);
 
 
