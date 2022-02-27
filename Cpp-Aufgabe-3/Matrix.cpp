@@ -54,6 +54,10 @@ std::string Matrix33::toString() const
     return s.str();
 }
 
+
+// ----------------------------------------------------------------------------
+
+
 // Operatoren überladen
 
 // Matrix + Matrix
@@ -70,6 +74,7 @@ Matrix33 Matrix33::operator+(const Matrix33& rMat) const
                     m_matrix[2][2] + rMat.m_matrix[2][2]);
 }
 
+
 // Matrix * Matrix
 Matrix33 Matrix33::operator*(const Matrix33& rMat) const
 {
@@ -85,6 +90,7 @@ Matrix33 Matrix33::operator*(const Matrix33& rMat) const
     return product;
 }
 
+
 // Matrix * Zahl
 Matrix33 Matrix33::operator*(int x)
 {
@@ -96,6 +102,7 @@ Matrix33 Matrix33::operator*(int x)
     }
     return product;
 }
+
 
 // Matrix += Matrix
 Matrix33 Matrix33::operator+=(const Matrix33& rMat)
@@ -113,7 +120,8 @@ Matrix33 Matrix33::operator+=(const Matrix33& rMat)
     return *this;
 }
 
-// Matrix + Zahl, friend von Matrix * Zahl
+
+// Zahl * Matrix, friend von Matrix * Zahl
 Matrix33 operator*(const int x, const Matrix33& rMat)
 {
     Matrix33 product = Matrix33(0, 0, 0, 0, 0, 0, 0, 0, 0);
