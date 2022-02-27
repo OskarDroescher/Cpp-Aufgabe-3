@@ -21,14 +21,13 @@ int main()
     // Veraendern Sie die Funktion Matrix33::get so, 
     // dass Sie ueber diese Funktion auch Werte verändern koennen:
     // Hinweis: Rueckgabewert als Referenz
-    // mat1.get(1, 1) = 5;
     
     std::cout<<"\n\nAufgabe 1\n=========\n" <<std::endl;
     
 	// Wo steckt der eigentliche Konstruktoraufruf bei der folgenden Anweisung?
-    // ==> Der Konstruktoraufruf steckt in der Funktion
+    // ==> Der Konstruktoraufruf steckt in der Funktion "ones()"
 	// Wieso kann die Funktion ones() mit dem Scope-Operator, ohne Objekt aufgerufen werden? 
-    //==> Existiert kein Objekt und ein Objekt wird benötigt, wird das Objekt über einen Konstruktor definiert.
+    // ==> Existiert kein Objekt und ein Objekt wird benötigt, wird das Objekt über einen Konstruktor erzeugt.
 	Matrix33 mat1 = Matrix33::ones();
 	
     // Ueber die Funktion Matrix33::get koennen sie einen Wert in der Matrix abfragen:
@@ -84,16 +83,13 @@ int main()
     // ------------------------------------------------------------------------
     
     std::cout<<"\n\nAufgabe 3\n=========\n" <<std::endl;
-    
     // Testen Sie folgende Anweisung:
     //Matrix33 matResult4 = 5 * matA;
     // Warum funktioniert die Anweisung nicht?
     //==> Da der vorhandene Oporator "Matrix33 operator*(int x);" erst die Matrix und dann den int Wert entgegen nimmt.
     // Aendern Sie den '*' Operator so, dass der Ausdruck funktioniert!
-
     Matrix33 matResult4 = 5 * matA;
     std::cout << "Zahl * matA =\n" << matResult4.toString() << std::endl;
-
 
     // ------------------------------------------------------------------------
     // 4. Aufgabe (Konvertierungsoperator)
