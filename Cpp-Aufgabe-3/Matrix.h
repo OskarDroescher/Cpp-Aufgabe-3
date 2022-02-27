@@ -29,6 +29,7 @@ public:
     Matrix33 operator*(const Matrix33& rMat) const;     // Matrix * Matrix
     Matrix33 operator*(int x);                          // Matrix * Zahl
     Matrix33 operator+=(const Matrix33& rMat);          // Matrix += Matrix
+    friend Matrix33 operator*(const int x, const Matrix33& rMat);
 
 private:
     double m_matrix[3][3];

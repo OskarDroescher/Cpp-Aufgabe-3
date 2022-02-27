@@ -113,3 +113,15 @@ Matrix33 Matrix33::operator+=(const Matrix33& rMat)
     *this = matadd;
     return *this;
 }
+
+// Matrix + Zahl, friend von Matrix * Zahl
+Matrix33 operator*(const int x, const Matrix33& rMat)
+{
+    Matrix33 product = Matrix33(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            product.m_matrix[row][col] = rMat.m_matrix[row][col] * x;
+        }
+    }
+    return product;
+}

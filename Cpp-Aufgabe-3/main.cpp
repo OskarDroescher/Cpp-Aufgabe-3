@@ -91,12 +91,8 @@ int main()
     //==> Da der vorhandene Oporator "Matrix33 operator*(int x);" erst die Matrix und dann den int Wert entgegen nimmt.
     // Aendern Sie den '*' Operator so, dass der Ausdruck funktioniert!
 
-
-
-
-    //Den vorhandenen "*" Operator ändern!!!
-    //Matrix33 matResult4 = 5 * matA;
-    //std::cout << "Zahl * matA =\n" << matResult4.toString() << std::endl;
+    Matrix33 matResult4 = 5 * matA;
+    std::cout << "Zahl * matA =\n" << matResult4.toString() << std::endl;
 
 
     // ------------------------------------------------------------------------
